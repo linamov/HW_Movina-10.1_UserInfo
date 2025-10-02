@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Info Card</title>
+  <title>User Info Table</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -31,7 +31,7 @@
     #result {
       margin-top: 30px;
       display: none;
-      max-width: 350px;
+      max-width: 400px;
       margin-left: auto;
       margin-right: auto;
       padding: 20px;
@@ -42,14 +42,24 @@
       color: #222;
       text-align: left;
     }
-    #result p {
-      margin: 8px 0;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #aaa;
+    }
+    td:first-child {
+      font-weight: bold;
+      color: #0d47a1;
+      width: 35%;
     }
   </style>
 </head>
 <body>
-  <h1>Magical User Info Card</h1>
-  <p>Click the button and enter your info to see your card!</p>
+  <h1>User Info Table</h1>
+  <p>Click the button and enter your info to see your table!</p>
   <button id="runButton">Show My Info</button>
   <div id="result"></div>
 
