@@ -5,31 +5,31 @@ button.addEventListener("click", () => {
   const name = prompt("Enter your name (letters only):");
   const age = prompt("Enter your age (numbers only):");
   const city = prompt("Enter your city (letters only):");
+  const skillsInput = prompt("Enter your skills separated by commas:");
 
-  const nameRegex = /^[A-Za-zА-Яа-яёЁ\s'-]+$/;
-  const cityRegex = /^[A-Za-zА-Яа-яёЁ\s'-]+$/;
+  const nameCityRegex = /^[A-Za-zА-Яа-яёЁ\s'-]+$/;
   const ageRegex = /^\d+$/;
 
-  if (!name || !age || !city) {
-    resultDiv.style.display = "inline-block";
-    resultDiv.innerHTML = "<p>⚠️ You must fill all fields!</p>";
+  if (!name || !age || !city || !skillsInput) {
+    resultDiv.style.display = "block";
+    resultDiv.innerHTML = "<p>⚠️ All fields are required!</p>";
     return;
   }
 
-  if (!nameRegex.test(name.trim())) {
-    resultDiv.style.display = "inline-block";
+  if (!nameCityRegex.test(name.trim())) {
+    resultDiv.style.display = "block";
     resultDiv.innerHTML = "<p>⚠️ Name must contain only letters!</p>";
     return;
   }
 
-  if (!cityRegex.test(city.trim())) {
-    resultDiv.style.display = "inline-block";
+  if (!nameCityRegex.test(city.trim())) {
+    resultDiv.style.display = "block";
     resultDiv.innerHTML = "<p>⚠️ City must contain only letters!</p>";
     return;
   }
 
   if (!ageRegex.test(age.trim())) {
-    resultDiv.style.display = "inline-block";
+    resultDiv.style.display = "block";
     resultDiv.innerHTML = "<p>⚠️ Age must contain only numbers!</p>";
     return;
   }
@@ -38,12 +38,12 @@ button.addEventListener("click", () => {
     name: name.trim(),
     age: age.trim(),
     city: city.trim(),
+    skills: skillsInput.split(",").map(s => s.trim()),
     getInfo: function() {
-      return `<table>
-                <tr><td>Name</td><td>${this.name}</td></tr>
-                <tr><td>Age</td><td>${this.age}</td></tr>
-                <tr><td>City</td><td>${this.city}</td></tr>
-              </table>`;
+      return `<p><strong>Name:</strong> ${this.name}</p>
+              <p><strong>Age:</strong> ${this.age}</p>
+              <p><strong>City:</strong> ${this.city}</p>
+              <p><strong>Skills:</strong> ${this.skills.join(", ")}</p>`;
     }
   };
 
