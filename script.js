@@ -5,12 +5,11 @@ button.addEventListener("click", () => {
   const name = prompt("Enter your name (letters only):");
   const age = prompt("Enter your age (numbers only):");
   const city = prompt("Enter your city (letters only):");
-  const skillsInput = prompt("Enter your skills separated by commas:");
 
   const nameCityRegex = /^[A-Za-zА-Яа-яёЁ\s'-]+$/;
   const ageRegex = /^\d+$/;
 
-  if (!name || !age || !city || !skillsInput) {
+  if (!name || !age || !city) {
     resultDiv.style.display = "block";
     resultDiv.innerHTML = "<p>⚠️ All fields are required!</p>";
     return;
@@ -38,12 +37,12 @@ button.addEventListener("click", () => {
     name: name.trim(),
     age: age.trim(),
     city: city.trim(),
-    skills: skillsInput.split(",").map(s => s.trim()),
     getInfo: function() {
-      return `<p><strong>Name:</strong> ${this.name}</p>
-              <p><strong>Age:</strong> ${this.age}</p>
-              <p><strong>City:</strong> ${this.city}</p>
-              <p><strong>Skills:</strong> ${this.skills.join(", ")}</p>`;
+      return `<table>
+                <tr><td>Name</td><td>${this.name}</td></tr>
+                <tr><td>Age</td><td>${this.age}</td></tr>
+                <tr><td>City</td><td>${this.city}</td></tr>
+              </table>`;
     }
   };
 
